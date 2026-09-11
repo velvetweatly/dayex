@@ -16,14 +16,14 @@ afterEach(() => {
 
 it('Format meridiem correctly', () => {
   for (let i = 0; i <= 23; i += 1) {
-    const dayjsKu = dayex()
+    const dayexKu = dayex()
       .startOf('day')
       .add(i, 'hour')
     const hour = (i % 12 || 12)
       .toString()
       .replace(/\d/g, match => englishToArabicNumbersMap[match])
     const m = i < 12 ? 'پ.ن' : 'د.ن'
-    expect(dayjsKu.locale('ku').format('h A')).toBe(`${hour} ${m}`)
+    expect(dayexKu.locale('ku').format('h A')).toBe(`${hour} ${m}`)
   }
 })
 

@@ -137,7 +137,7 @@ export default (o, c, d) => {
     const timezone = arg2 || arg1 || defaultTimezone
     const previousOffset = tzOffset(+d(), timezone)
     if (typeof input !== 'string') {
-      // timestamp number || js Date || Day.js
+      // timestamp number || js Date || Dayex
       return d(input).tz(timezone)
     }
     const localTs = d.utc(input, parseFormat).valueOf()

@@ -1,174 +1,203 @@
-English | [简体中文](./docs/zh-cn/README.zh-CN.md) | [日本語](./docs/ja/README-ja.md) | [Português Brasileiro](./docs/pt-br/README-pt-br.md) | [한국어](./docs/ko/README-ko.md) | [Español (España)](./docs/es-es/README-es-es.md) | [Русский](./docs/ru/README-ru.md) | [Türkçe](./docs/tr/README-tr.md) | [සිංහල](./docs/si/README-si.md) | [עברית](./docs/he/README-he.md)
+# Dayex
 
-<p align="center"><a href="https://dayex.org/" target="_blank" rel="noopener noreferrer"><img width="550"
-                                                                             src="https://user-images.githubusercontent.com/17680888/39081119-3057bbe2-456e-11e8-862c-646133ad4b43.png"
-                                                                             alt="Day.js" /></a></p>
-<p align="center">Fast <b>2kB</b> alternative to Moment.js with the same modern API</p>
-<p align="center">
-    <a href="https://bundlephobia.com/package/dayex"><img
-            src="https://img.shields.io/bundlephobia/minzip/dayex?style=flat-square&color=%2345cc11"
-            alt="Gzip Size"></a>
-    <a href="https://www.npmjs.com/package/dayex"><img src="https://img.shields.io/npm/v/dayex.svg?style=flat-square&colorB=51C838"
-                                                       alt="NPM Version"></a>
-    <a href="https://github.com/velvetweatly/dayex/actions/workflows/check.yml"><img
-            src="https://img.shields.io/github/actions/workflow/status/velvetweatly/dayex/check.yml?style=flat-square" alt="Build Status"></a>
-    <a href="https://codecov.io/gh/velvetweatly/dayex"><img
-            src="https://img.shields.io/codecov/c/github/velvetweatly/dayex/master.svg?style=flat-square" alt="Codecov"></a>
-    <a href="https://github.com/velvetweatly/dayex/blob/master/LICENSE"><img
-            src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="License"></a>
-    <br>
-    <a href="https://saucelabs.com/u/dayjs">
-        <img width="750" src="https://user-images.githubusercontent.com/17680888/40040137-8e3323a6-584b-11e8-9dba-bbe577ee8a7b.png" alt="Sauce Test Status">
-    </a>
-</p>
+**A modern date kernel for product work — not a calendar widget, not a Moment clone.**
 
-> Day.js is a minimalist JavaScript library that parses, validates, manipulates, and displays dates and times for modern browsers with a largely Moment.js-compatible API. If you use Moment.js, you already know how to use Day.js.
+Dayex is a tiny, immutable JavaScript date library. The core stays under 3 KB gzip. Everything else — locales, time zones, durations, business calendars, date ranges — loads only when you ask for it.
+
+The name is deliberate: **day + next**. A date you can chain, a range you can hold, a working calendar you can actually ship.
+
+[Documentation](https://dayex.org/) · [npm](https://www.npmjs.com/package/dayex) · [API](https://dayex.org/docs/en/parse/parse)
+
+[![gzip](https://img.shields.io/bundlephobia/minzip/dayex?style=flat-square)](https://bundlephobia.com/package/dayex)
+[![npm](https://img.shields.io/npm/v/dayex.svg?style=flat-square)](https://www.npmjs.com/package/dayex)
+[![ci](https://img.shields.io/github/actions/workflow/status/velvetweatly/dayex/check.yml?style=flat-square)](https://github.com/velvetweatly/dayex/actions/workflows/check.yml)
+[![coverage](https://img.shields.io/codecov/c/github/velvetweatly/dayex/master.svg?style=flat-square)](https://codecov.io/gh/velvetweatly/dayex)
+[![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](./LICENSE)
 
 ```js
-dayex().startOf('month').add(1, 'day').set('year', 2018).format('YYYY-MM-DD HH:mm:ss');
-```
+import dayex from 'dayex'
 
-* 🕒 Familiar Moment.js API & patterns
-* 💪 Immutable
-* 🔥 Chainable
-* 🌐 I18n support
-* 📦 2kb mini library
-* 👫 All browsers supported
+dayex('2026-01-15')
+  .startOf('month')
+  .add(1, 'week')
+  .format('YYYY-MM-DD')
+// '2026-01-08'
+```
 
 ---
 
-## Getting Started
+## Why Dayex
 
-### Documentation
+Classic date libraries treated time as a single mutable instant. Dayex treats time as **values you compose**.
 
-You can find more details, API, and other docs on [dayex.org](https://dayex.org/) website.
+| You need | Dayex gives you |
+| --- | --- |
+| A point in time | `dayex()` — parse, format, add, query |
+| A working calendar | `businessDay` — holidays, weekends, SLA offsets |
+| An interval | `range` — overlap, intersect, iterate, range sets |
+| A locale or zone | On-demand modules. Unused code never ships |
 
-### Installation
+The parse / format / add surface will feel familiar if you have used Dayex. The model is not the same. Instances never mutate. Ranges are first-class objects. Business days are a real calendar, not `day() !== 0`.
 
-```console
-npm install dayex --save
+Zero runtime dependencies. Time zones go through `Intl`, not a bundled tz database.
+
+---
+
+## Install
+
+```bash
+npm install dayex
 ```
 
-📚[Installation Guide](https://dayex.org/docs/en/installation/installation)
-
-### API
-
-It's easy to use Day.js APIs to parse, validate, manipulate, and display dates and times.
-
-```javascript
-dayex('2018-08-08') // parse
-
-dayex().format('{YYYY} MM-DDTHH:mm:ss SSS [Z] A') // display
-
-dayex().set('month', 3).month() // get & set
-
-dayex().add(1, 'year') // manipulate
-
-dayex().isBefore(dayex()) // query
+```js
+import dayex from 'dayex'
+// or
+const dayex = require('dayex')
 ```
 
-📚[API Reference](https://dayex.org/docs/en/parse/parse)
+---
 
-### I18n
+## Core
 
-Day.js has great support for internationalization.
+Every call returns a new instance.
 
-But none of them will be included in your build unless you use them.
+```js
+const due = dayex('2026-03-01T09:00:00')
 
-```javascript
-import 'dayex/locale/es' // load on demand
-
-dayex.locale('es') // use Spanish locale globally
-
-dayex('2018-05-05').locale('zh-cn').format() // use Chinese Simplified locale in a specific instance
+due.add(2, 'week').subtract(1, 'day')
+due.startOf('month').endOf('week')
+due.set('hour', 18).hour()          // 18
+due.isBefore(dayex(), 'day')
+due.format('YYYY-MM-DD HH:mm')
 ```
 
-📚[Internationalization](https://dayex.org/docs/en/i18n/i18n)
+Parse a value, display it, move it, or compare it. Units accept long, short, and plural forms (`day`, `d`, `days`).
 
-### Plugin
-
-A plugin is an independent module that can be added to Day.js to extend functionality or add new features.
-
-```javascript
-import advancedFormat from 'dayex/plugin/advancedFormat' // load on demand
-
-dayex.extend(advancedFormat) // use plugin
-
-dayex().format('Q Do k kk X x') // more available formats
+```js
+dayex()                             // now
+dayex('2026-09-11')
+dayex(Date.now())
+dayex.unix(1773129600)
 ```
 
-📚[Plugin List](https://dayex.org/docs/en/plugin/plugin)
+---
 
-## Downloads
-![Day.js Chart](./docs/assets/download.png)
+## Locales
 
-## Sponsors
+Nothing locale-specific is in the default build. Import what the product actually shows.
 
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
+```js
+import 'dayex/locale/ko'
+import 'dayex/locale/ja'
 
-[[Become a sponsor via Github](https://github.com/sponsors/velvetweatly/)] [[Become a sponsor via OpenCollective](https://opencollective.com/dayjs#sponsor)]
+dayex.locale('ko')
+dayex().format('YYYY년 MMMM D일 dddd')
 
-<a href="https://github.com/ken-swyfft" target="_blank">
-  <img width="70" src="https://avatars.githubusercontent.com/u/65305317?v=4">
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://opencollective.com/filerev" target="_blank">
-  <img width="70" src="https://images.opencollective.com/filerev/93a8f05/logo/256.png?height=256" />
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://opencollective.com/carboneio" target="_blank">
-  <img width="70" src="https://images.opencollective.com/carboneio/fe2066c/logo/256.png?height=256">
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://www.netrouting.com" target="_blank" alt="Netrouting Dedicated Servers">
-  <img width="70" src="https://netrouting.com/wp-content/uploads/2026/04/Logo-netrouting.png">
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://www.sayfone.com/call-rates " target="_blank">
-  <img alt="Sayfone Cheap international calls" width="70" src="https://github.com/user-attachments/assets/68f91139-b190-421b-bcd7-43a8e3d84fe7">
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://automatio.ai" target="_blank" alt="Automatio AI">
-  <img width="70" src="https://avatars.githubusercontent.com/u/1984909?v=4" />
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://bestkru.com/" target="_blank">
-  <img width="70" src="https://avatars.githubusercontent.com/u/159320286" alt="BestKru">
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://handsontable.com/docs/react-data-grid/?utm_source=Dayjs_GH&utm_medium=sponsorship&utm_campaign=library_sponsorship" target="_blank">
-  <img width="70" src="https://github.com/user-attachments/assets/426c3476-dc34-44d1-a904-ed58dbd20dd6">
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://route4me.com/" target="_blank">
-  <img width="70" src="https://github.com/user-attachments/assets/3fbc86c5-98a9-49c2-beae-1969026fcd76" alt="Route Optimizer and Route Planner Software">
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://github.com/sentdm" target="_blank">
-  <img width="70" src="https://avatars.githubusercontent.com/u/153308555?s=200&v=4">
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://github.com/mvpsnet" target="_blank">
-  <img width="70" src="https://avatars.githubusercontent.com/u/89784111?s=96&v=4">
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://onlydoc.com/" target="_blank" alt><img alt="" width="70" src="https://github.com/user-attachments/assets/f5d5938e-48a1-420b-af72-c4012d3941c1" /></a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://unaimytext.com" target="_blank">
-  <img width="70" src="https://github.com/user-attachments/assets/8510473a-c097-4bc9-8c61-b7515194f6f5">
-</a>
+dayex('2026-01-01').locale('ja').format('LL')
+```
 
+---
 
-## Contributors
+## Plugins
 
-This project exists thanks to all the people who contribute.
+Extend the kernel only for the features you use.
 
-Please give us a 💖 star 💖 to support us. Thank you.
+```js
+import dayex from 'dayex'
+import utc from 'dayex/plugin/utc'
+import timezone from 'dayex/plugin/timezone'
+import duration from 'dayex/plugin/duration'
+import relativeTime from 'dayex/plugin/relativeTime'
 
-And thank you to all our backers! 🙏
+dayex.extend(utc)
+dayex.extend(timezone)
+dayex.extend(duration)
+dayex.extend(relativeTime)
 
-<a href="https://opencollective.com/dayjs#backers" target="_blank"><img src="https://opencollective.com/dayjs/contributors.svg?width=890" /></a>
+dayex('2026-01-01T00:00:00Z')
+  .tz('Asia/Seoul')
+  .from(dayex())
+```
+
+Other official modules include `customParseFormat`, `isoWeek`, `isBetween`, `minMax`, `localizedFormat`, `advancedFormat`, `quarterOfYear`, and `calendar`.
+
+Two modules define the current Dayex surface — the parts a modern app actually argues about.
+
+### Business days
+
+Weekends and holidays are not the same thing. `businessDay` keeps them separate, then lets you move and count on the result.
+
+```js
+import businessDay from 'dayex/plugin/businessDay'
+
+dayex.extend(businessDay, {
+  workingWeekdays: [1, 2, 3, 4, 5],
+  holidays: ['2026-01-01', { date: '12-25', name: 'Christmas' }]
+})
+
+dayex('2026-01-02T17:00:00').addBusinessDays(3)
+// 2026-01-07T17:00:00  — weekend skipped, time kept
+
+dayex('2026-01-03').toBusinessDay('nearest')
+dayex('2026-01-31').businessDiff('2026-01-01')
+dayex().businessDaysInMonth()
+```
+
+Override the calendar per call when one process serves more than one jurisdiction.
+
+```js
+dayex('2026-07-03').isBusinessDay({ holidays: usFederal })
+```
+
+### Ranges
+
+Two timestamps are not an interval. `range` is a value: contains, overlaps, intersect, walk, split.
+
+```js
+import range from 'dayex/plugin/range'
+
+dayex.extend(range)
+
+const leave = dayex.range('2026-01-05', '2026-01-09')
+const sprint = dayex('2026-01').toRange('month')
+
+leave.contains(dayex())
+leave.overlaps(sprint)
+leave.each('day').map((d) => d.format('MM/DD'))
+
+// checkout day can be reused
+const a = dayex.range('2026-01-01', '2026-01-03')
+const b = dayex.range('2026-01-03', '2026-01-05')
+a.overlaps(b, 'day', '[)')  // false
+a.adjacent(b, 'day', '[)')  // true
+```
+
+Disconnected pieces become a `RangeSet` — merge, subtract, query as one calendar.
+
+```js
+dayex.rangeSet(leave, dayex.range('2026-02-01', '2026-02-03'))
+```
+
+---
+
+## Design
+
+- **Immutable.** `add` never changes the instance you already hold.
+- **Composable.** Points, ranges, and working days are separate types that plug together.
+- **Paid for only once.** Core has no `dependencies`. Plugins and locales are import-level.
+- **Host Intl for zones.** No shipped timezone dump.
+- **Typed.** Official plugins ship declaration files.
+
+The chainable grammar is intentionally close to the ecosystem people already type. The types you get back — especially `DayexRange` and a configured business calendar — are the modern part.
+
+---
+
+## Docs
+
+Full parse, display, and plugin reference: [dayex.org](https://dayex.org/)
+
+---
 
 ## License
 
-Day.js is licensed under a [MIT License](./LICENSE).
+MIT. See [LICENSE](./LICENSE).

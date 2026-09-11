@@ -136,7 +136,7 @@ it('Belarusian locale formats dates with correct month forms', () => {
   ]
 
   tests.forEach(({ date, format, expected }) => {
-    const dayjsWithLocale = dayex(date).locale('be')
-    expect(dayjsWithLocale.format(format)).toEqual(expected)
+    const dayexWithLocale = dayex(date).locale('be')
+    expect(dayexWithLocale.format(format)).toEqual(expected)
   })
 })

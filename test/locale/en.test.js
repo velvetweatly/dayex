@@ -17,8 +17,8 @@ const locales = [
 describe('English date formats', () => {
   locales.forEach((locale) => {
     it(`should correctly format date with locale - ${locale.locale}`, () => {
-      const dayjsWithLocale = dayex('2019-12-25').locale(locale.locale)
-      expect(dayjsWithLocale.format('L')).toEqual(locale.expectedDate)
+      const dayexWithLocale = dayex('2019-12-25').locale(locale.locale)
+      expect(dayexWithLocale.format('L')).toEqual(locale.expectedDate)
     })
   })
 })

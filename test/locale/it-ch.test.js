@@ -23,18 +23,18 @@ describe('Italian formats in Switzerland', () => {
 
   it('Format month with locale function', () => {
     for (let i = 0; i <= 7; i += 1) {
-      const dayjsWithLocale = dayex().add(i, 'day')
+      const dayexWithLocale = dayex().add(i, 'day')
       const momentWithLocale = moment().add(i, 'day')
       const testFormat1 = 'DD MMMM YYYY MMM'
       const testFormat2 = 'dddd, MMMM D YYYY'
       const testFormat3 = 'MMMM'
       const testFormat4 = 'MMM'
       const testFormat5 = 'L'
-      expect(dayjsWithLocale.format(testFormat1)).toEqual(momentWithLocale.format(testFormat1))
-      expect(dayjsWithLocale.format(testFormat2)).toEqual(momentWithLocale.format(testFormat2))
-      expect(dayjsWithLocale.format(testFormat3)).toEqual(momentWithLocale.format(testFormat3))
-      expect(dayjsWithLocale.format(testFormat4)).toEqual(momentWithLocale.format(testFormat4))
-      expect(dayjsWithLocale.format(testFormat5)).toEqual(momentWithLocale.format(testFormat5))
+      expect(dayexWithLocale.format(testFormat1)).toEqual(momentWithLocale.format(testFormat1))
+      expect(dayexWithLocale.format(testFormat2)).toEqual(momentWithLocale.format(testFormat2))
+      expect(dayexWithLocale.format(testFormat3)).toEqual(momentWithLocale.format(testFormat3))
+      expect(dayexWithLocale.format(testFormat4)).toEqual(momentWithLocale.format(testFormat4))
+      expect(dayexWithLocale.format(testFormat5)).toEqual(momentWithLocale.format(testFormat5))
     }
   })
 

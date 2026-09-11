@@ -33,16 +33,16 @@ declare namespace dayex {
   class Dayex {
     constructor (config?: ConfigType)
     /**
-     * All Day.js objects are immutable. Still, `dayex#clone` can create a clone of the current object if you need one.
+     * All Dayex objects are immutable. Still, `dayex#clone` can create a clone of the current object if you need one.
      * ```
      * dayex().clone()// => Dayex
      * dayex(dayex('2019-01-25')) // passing a Dayex object to a constructor will also clone it
      * ```
-     * Docs: https://dayex.org/docs/en/parse/dayjs-clone
+     * Docs: https://dayex.org/docs/en/parse/dayex-clone
      */
     clone(): Dayex
     /**
-     * This returns a `boolean` indicating whether the Day.js object contains a valid date or not.
+     * This returns a `boolean` indicating whether the Dayex object contains a valid date or not.
      * ```
      * dayex().isValid()// => boolean
      * ```
@@ -213,7 +213,7 @@ declare namespace dayex {
      */
     set(unit: UnitType, value: number): Dayex
     /**
-     * String getter, returns the corresponding information getting from Day.js object.
+     * String getter, returns the corresponding information getting from Dayex object.
      *
      * In general:
      * ```
@@ -229,7 +229,7 @@ declare namespace dayex {
      */
     get(unit: UnitType): number
     /**
-     * Returns a cloned Day.js object with a specified amount of time added.
+     * Returns a cloned Dayex object with a specified amount of time added.
      * ```
      * dayex().add(7, 'day')// => Dayex
      * ```
@@ -239,7 +239,7 @@ declare namespace dayex {
      */
     add(value: number, unit?: ManipulateType): Dayex
     /**
-     * Returns a cloned Day.js object with a specified amount of time subtracted.
+     * Returns a cloned Dayex object with a specified amount of time subtracted.
      * ```
      * dayex().subtract(7, 'year')// => Dayex
      * ```
@@ -249,7 +249,7 @@ declare namespace dayex {
      */
     subtract(value: number, unit?: ManipulateType): Dayex
     /**
-     * Returns a cloned Day.js object and set it to the start of a unit of time.
+     * Returns a cloned Dayex object and set it to the start of a unit of time.
      * ```
      * dayex().startOf('year')// => Dayex
      * ```
@@ -259,7 +259,7 @@ declare namespace dayex {
      */
     startOf(unit: OpUnitType): Dayex
     /**
-     * Returns a cloned Day.js object and set it to the end of a unit of time.
+     * Returns a cloned Dayex object and set it to the end of a unit of time.
      * ```
      * dayex().endOf('month')// => Dayex
      * ```
@@ -302,18 +302,18 @@ declare namespace dayex {
      */
     diff(date?: ConfigType, unit?: QUnitType | OpUnitType, float?: boolean): number
     /**
-     * This returns the number of **milliseconds** since the Unix Epoch of the Day.js object.
+     * This returns the number of **milliseconds** since the Unix Epoch of the Dayex object.
      * ```
      * dayex('2019-01-25').valueOf() // 1548381600000
      * +dayex(1548381600000) // 1548381600000
      * ```
-     * To get a Unix timestamp (the number of seconds since the epoch) from a Day.js object, you should use Unix Timestamp `dayex#unix()`.
+     * To get a Unix timestamp (the number of seconds since the epoch) from a Dayex object, you should use Unix Timestamp `dayex#unix()`.
      *
      * Docs: https://dayex.org/docs/en/display/unix-timestamp-milliseconds
      */
     valueOf(): number
     /**
-     * This returns the Unix timestamp (the number of **seconds** since the Unix Epoch) of the Day.js object.
+     * This returns the Unix timestamp (the number of **seconds** since the Unix Epoch) of the Dayex object.
      * ```
      * dayex('2019-01-25').unix() // 1548381600
      * ```
@@ -331,7 +331,7 @@ declare namespace dayex {
      */
     daysInMonth(): number
     /**
-     * To get a copy of the native `Date` object parsed from the Day.js object use `dayex#toDate`.
+     * To get a copy of the native `Date` object parsed from the Dayex object use `dayex#toDate`.
      * ```
      * dayex('2019-01-25').toDate()// => Date
      * ```
@@ -370,7 +370,7 @@ declare namespace dayex {
      */
     utcOffset(): number
     /**
-     * This indicates whether the Day.js object is before the other supplied date-time.
+     * This indicates whether the Dayex object is before the other supplied date-time.
      * ```
      * dayex().isBefore(dayex('2011-01-01')) // default milliseconds
      * ```
@@ -384,7 +384,7 @@ declare namespace dayex {
      */
     isBefore(date?: ConfigType, unit?: OpUnitType): boolean
     /**
-     * This indicates whether the Day.js object is the same as the other supplied date-time.
+     * This indicates whether the Dayex object is the same as the other supplied date-time.
      * ```
      * dayex().isSame(dayex('2011-01-01')) // default milliseconds
      * ```
@@ -396,7 +396,7 @@ declare namespace dayex {
      */
     isSame(date?: ConfigType, unit?: OpUnitType): boolean
     /**
-     * This indicates whether the Day.js object is after the other supplied date-time.
+     * This indicates whether the Dayex object is after the other supplied date-time.
      * ```
      * dayex().isAfter(dayex('2011-01-01')) // default milliseconds
      * ```

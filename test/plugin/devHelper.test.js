@@ -77,7 +77,7 @@ describe('dev-helper: diff() usage warnings', () => {
     expect(consoleSpy).not.toHaveBeenCalledWith(diffWarningMsg)
   })
 
-  it('does NOT warn when diff() is called with a valid Day.js instance', () => {
+  it('does NOT warn when diff() is called with a valid Dayex instance', () => {
     const consoleSpy = jest.spyOn(console, 'warn')
     dayex('2025-01-10').diff(dayex(), 'days')
     expect(consoleSpy).not.toHaveBeenCalledWith(diffWarningMsg)

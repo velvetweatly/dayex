@@ -96,7 +96,7 @@ it('German locales use region specific names', () => {
   ]
 
   locales.forEach((locale) => {
-    const dayjsWithLocale = dayex('2022-01-19').locale(locale.locale)
-    expect(dayjsWithLocale.format('ddd, D. MMMM YYYY')).toEqual(locale.expectedFormattedDate)
+    const dayexWithLocale = dayex('2022-01-19').locale(locale.locale)
+    expect(dayexWithLocale.format('ddd, D. MMMM YYYY')).toEqual(locale.expectedFormattedDate)
   })
 })

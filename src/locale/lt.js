@@ -6,11 +6,11 @@ const monthStandalone = 'sausis_vasaris_kovas_balandis_gegužė_birželis_liepa_
 // eslint-disable-next-line no-useless-escape
 const MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?|MMMM?(\[[^\[\]]*\]|\s)+D[oD]?/
 
-const months = (dayjsInstance, format) => {
+const months = (dayexInstance, format) => {
   if (MONTHS_IN_FORMAT.test(format)) {
-    return monthFormat[dayjsInstance.month()]
+    return monthFormat[dayexInstance.month()]
   }
-  return monthStandalone[dayjsInstance.month()]
+  return monthStandalone[dayexInstance.month()]
 }
 months.s = monthStandalone
 months.f = monthFormat

@@ -25,6 +25,7 @@ patches
 #doc
 CONTRIBUTING.md
 docs
+dashboard
 
 #other
 .travis.yml

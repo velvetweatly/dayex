@@ -20,7 +20,7 @@ afterEach(() => {
 
 it('Format Month with locale function', () => {
   for (let i = 0; i <= 7; i += 1) {
-    const dayjsBN = dayex()
+    const dayexBN = dayex()
       .locale('bn-bd')
       .add(i, 'day')
     const momentBN = moment()
@@ -29,20 +29,20 @@ it('Format Month with locale function', () => {
     const testFormat1 = 'DD MMMM YYYY MMM'
     const testFormat2 = 'MMMM'
     const testFormat3 = 'MMM'
-    expect(dayjsBN.format(testFormat1)).toEqual(momentBN.format(testFormat1))
-    expect(dayjsBN.format(testFormat2)).toEqual(momentBN.format(testFormat2))
-    expect(dayjsBN.format(testFormat3)).toEqual(momentBN.format(testFormat3))
+    expect(dayexBN.format(testFormat1)).toEqual(momentBN.format(testFormat1))
+    expect(dayexBN.format(testFormat2)).toEqual(momentBN.format(testFormat2))
+    expect(dayexBN.format(testFormat3)).toEqual(momentBN.format(testFormat3))
   }
 })
 
 it('Month short', () => {
   const date = '2021-02-01T05:54:32.005Z'
-  const dayjsBN = dayex(date)
+  const dayexBN = dayex(date)
     .locale('bn-bd')
   const momentBN = moment(date)
     .locale('bn-bd')
   const testFormat1 = 'DD MMMM YYYY MMM'
-  expect(dayjsBN.format(testFormat1)).toEqual(momentBN.format(testFormat1))
+  expect(dayexBN.format(testFormat1)).toEqual(momentBN.format(testFormat1))
 })
 
 it('Preparse with locale function', () => {

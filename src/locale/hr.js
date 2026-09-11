@@ -5,11 +5,11 @@ const monthFormat = 'siječnja_veljače_ožujka_travnja_svibnja_lipnja_srpnja_ko
 const monthStandalone = 'siječanj_veljača_ožujak_travanj_svibanj_lipanj_srpanj_kolovoz_rujan_listopad_studeni_prosinac'.split('_')
 const MONTHS_IN_FORMAT = /D[oD]?(\[[^[\]]*\]|\s)+MMMM?/
 
-const months = (dayjsInstance, format) => {
+const months = (dayexInstance, format) => {
   if (MONTHS_IN_FORMAT.test(format)) {
-    return monthFormat[dayjsInstance.month()]
+    return monthFormat[dayexInstance.month()]
   }
-  return monthStandalone[dayjsInstance.month()]
+  return monthStandalone[dayexInstance.month()]
 }
 months.s = monthStandalone
 months.f = monthFormat

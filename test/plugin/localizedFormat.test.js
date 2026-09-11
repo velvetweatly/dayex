@@ -36,14 +36,14 @@ it('Should not interpolate characters inside square brackets', () => {
   const localeFormats = {
     L: '[MMMM MM DD dddd]'
   }
-  const mockedDayJsLocale = {
+  const mockedDayexLocale = {
     ...es,
     name: 'fake-locale',
     formats: {
       ...localeFormats
     }
   }
-  const fakeDate = dayex(date, { locale: mockedDayJsLocale })
+  const fakeDate = dayex(date, { locale: mockedDayexLocale })
 
   expect(fakeDate.locale('fake-locale').format('l')).toEqual('MMMM MM DD dddd')
 })

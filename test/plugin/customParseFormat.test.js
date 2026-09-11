@@ -247,14 +247,14 @@ it('correctly parse month from string after changing locale globally', () => {
   const input = '2018 лютий 03'
   const format = 'YYYY MMMM DD'
 
-  const dayjsLocale = dayex().$locale()
+  const dayexLocale = dayex().$locale()
   const momentLocale = moment.locale()
   try {
     dayex.locale(uk)
     moment.locale('uk')
     expect(dayex(input, format).valueOf()).toBe(moment(input, format).valueOf())
   } finally {
-    dayex.locale(dayjsLocale)
+    dayex.locale(dayexLocale)
     moment.locale(momentLocale)
   }
 })
@@ -273,13 +273,13 @@ it('correctly parse ordinal', () => {
   expect(dayex(inputFalse, format).valueOf())
     .toBe(moment(inputFalse, format).valueOf())
 
-  const dayjsCN = dayex(inputZHCN, format, 'zh-cn')
+  const dayexCN = dayex(inputZHCN, format, 'zh-cn')
   const momentCN = moment(inputZHCN, format, 'zh-cn')
-  expect(dayjsCN.valueOf())
+  expect(dayexCN.valueOf())
     .toBe(momentCN.valueOf())
-  expect(dayjsCN.format(displayFormatWithLocale))
+  expect(dayexCN.format(displayFormatWithLocale))
     .toBe(momentCN.format(displayFormatWithLocale))
-  expect(dayjsCN.locale())
+  expect(dayexCN.locale())
     .toBe(momentCN.locale())
 })
 

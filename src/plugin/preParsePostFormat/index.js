@@ -1,7 +1,7 @@
 // Plugin template from https://dayex.org/docs/en/plugin/plugin
-export default (option, dayjsClass) => {
-  const oldParse = dayjsClass.prototype.parse
-  dayjsClass.prototype.parse = function (cfg) {
+export default (option, dayexClass) => {
+  const oldParse = dayexClass.prototype.parse
+  dayexClass.prototype.parse = function (cfg) {
     if (typeof cfg.date === 'string') {
       const locale = this.$locale()
       cfg.date =
@@ -13,8 +13,8 @@ export default (option, dayjsClass) => {
 
   // // overriding existing API
   // // e.g. extend dayex().format()
-  const oldFormat = dayjsClass.prototype.format
-  dayjsClass.prototype.format = function (...args) {
+  const oldFormat = dayexClass.prototype.format
+  dayexClass.prototype.format = function (...args) {
     // original format result
     const result = oldFormat.call(this, ...args)
     // return modified result
@@ -22,10 +22,10 @@ export default (option, dayjsClass) => {
     return locale && locale.postformat ? locale.postformat(result) : result
   }
 
-  const oldFromTo = dayjsClass.prototype.fromToBase
+  const oldFromTo = dayexClass.prototype.fromToBase
 
   if (oldFromTo) {
-    dayjsClass.prototype.fromToBase = function (
+    dayexClass.prototype.fromToBase = function (
       input,
       withoutSuffix,
       instance,

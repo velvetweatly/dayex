@@ -163,51 +163,51 @@ it('Format Escaping characters', () => {
 describe('Difference', () => {
   it('empty -> default milliseconds', () => {
     const dateString = '20110101'
-    const dayjsA = dayex()
-    const dayjsB = dayex(dateString)
+    const dayexA = dayex()
+    const dayexB = dayex(dateString)
     const momentA = moment()
     const momentB = moment(dateString)
-    expect(dayjsA.diff(dayjsB)).toBe(momentA.diff(momentB))
+    expect(dayexA.diff(dayexB)).toBe(momentA.diff(momentB))
   })
 
   it('diff -> none dayex object', () => {
     const dateString = '2013-02-08'
-    const dayjsA = dayex()
-    const dayjsB = new Date(dateString)
+    const dayexA = dayex()
+    const dayexB = new Date(dateString)
     const momentA = moment()
     const momentB = new Date(dateString)
-    expect(dayjsA.diff(dayjsB)).toBe(momentA.diff(momentB))
+    expect(dayexA.diff(dayexB)).toBe(momentA.diff(momentB))
   })
 
   it('diff -> in seconds, minutes, hours, days, weeks, months, quarters, years ', () => {
-    const dayjsA = dayex()
-    const dayjsB = dayex().add(1000, 'days')
-    const dayjsC = dayex().subtract(1000, 'days')
+    const dayexA = dayex()
+    const dayexB = dayex().add(1000, 'days')
+    const dayexC = dayex().subtract(1000, 'days')
     const momentA = moment()
     const momentB = moment().add(1000, 'days')
     const momentC = moment().subtract(1000, 'days')
     const units = ['seconds', 'minutes', 'hours', 'days', 'weeks', 'months', 'quarters', 'years']
     units.forEach((unit) => {
-      expect(dayjsA.diff(dayjsB, unit)).toBe(momentA.diff(momentB, unit))
-      expect(dayjsA.diff(dayjsB, unit, true)).toBe(momentA.diff(momentB, unit, true))
-      expect(dayjsA.diff(dayjsC, unit)).toBe(momentA.diff(momentC, unit))
-      expect(dayjsA.diff(dayjsC, unit, true)).toBe(momentA.diff(momentC, unit, true))
+      expect(dayexA.diff(dayexB, unit)).toBe(momentA.diff(momentB, unit))
+      expect(dayexA.diff(dayexB, unit, true)).toBe(momentA.diff(momentB, unit, true))
+      expect(dayexA.diff(dayexC, unit)).toBe(momentA.diff(momentC, unit))
+      expect(dayexA.diff(dayexC, unit, true)).toBe(momentA.diff(momentC, unit, true))
     })
   })
 
   it('Special diff in month according to moment.js', () => {
-    const dayjsA = dayex('20160115')
-    const dayjsB = dayex('20160215')
-    const dayjsC = dayex('20170115')
+    const dayexA = dayex('20160115')
+    const dayexB = dayex('20160215')
+    const dayexC = dayex('20170115')
     const momentA = moment('20160115')
     const momentB = moment('20160215')
     const momentC = moment('20170115')
     const units = ['months', 'quarters', 'years']
     units.forEach((unit) => {
-      expect(dayjsA.diff(dayjsB, unit)).toBe(momentA.diff(momentB, unit))
-      expect(dayjsA.diff(dayjsB, unit, true)).toBe(momentA.diff(momentB, unit, true))
-      expect(dayjsA.diff(dayjsC, unit)).toBe(momentA.diff(momentC, unit))
-      expect(dayjsA.diff(dayjsC, unit, true)).toBe(momentA.diff(momentC, unit, true))
+      expect(dayexA.diff(dayexB, unit)).toBe(momentA.diff(momentB, unit))
+      expect(dayexA.diff(dayexB, unit, true)).toBe(momentA.diff(momentB, unit, true))
+      expect(dayexA.diff(dayexC, unit)).toBe(momentA.diff(momentC, unit))
+      expect(dayexA.diff(dayexC, unit, true)).toBe(momentA.diff(momentC, unit, true))
     })
   })
 

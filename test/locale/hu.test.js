@@ -30,16 +30,16 @@ it('RelativeTime: Time from X', () => {
     dayex.locale('hu')
     moment.locale('hu')
 
-    const dayjsDay = dayex()
+    const dayexDay = dayex()
     const momentDay = moment()
 
-    const dayjsCompare = dayex().add(t[0], t[1])
+    const dayexCompare = dayex().add(t[0], t[1])
     const momentCompare = moment().add(t[0], t[1])
 
-    expect(dayjsDay.from(dayjsCompare)).toBe(momentDay.from(momentCompare))
+    expect(dayexDay.from(dayexCompare)).toBe(momentDay.from(momentCompare))
 
-    expect(dayjsDay.to(dayjsCompare)).toBe(momentDay.to(momentCompare))
+    expect(dayexDay.to(dayexCompare)).toBe(momentDay.to(momentCompare))
 
-    expect(dayjsDay.from(dayjsCompare, true)).toBe(momentDay.from(momentCompare, true))
+    expect(dayexDay.from(dayexCompare, true)).toBe(momentDay.from(momentCompare, true))
   })
 })

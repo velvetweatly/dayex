@@ -31,14 +31,14 @@ it('Utc Offset', () => {
 
 it('Diff (DST)', () => {
   const day = '2018-10-28'
-  const dayjsA = dayex(day)
-  const dayjsB = dayex(day).add(-1000, 'days')
+  const dayexA = dayex(day)
+  const dayexB = dayex(day).add(-1000, 'days')
   const momentA = moment(day)
   const momentB = moment(day).add(-1000, 'days')
   const units = ['seconds', 'minutes', 'hours', 'days', 'weeks', 'months', 'quarters', 'years']
   units.forEach((unit) => {
-    expect(dayjsA.diff(dayjsB, unit)).toBe(momentA.diff(momentB, unit))
-    expect(dayjsA.diff(dayjsB, unit, true)).toBe(momentA.diff(momentB, unit, true))
+    expect(dayexA.diff(dayexB, unit)).toBe(momentA.diff(momentB, unit))
+    expect(dayexA.diff(dayexB, unit, true)).toBe(momentA.diff(momentB, unit, true))
   })
 })
 

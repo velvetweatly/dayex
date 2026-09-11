@@ -51,15 +51,15 @@ describe('Parse', () => {
     expect(newYork.valueOf()).toBe(MnewYork.valueOf())
   })
 
-  it('parse timestamp, js Date, Day.js object', () => {
+  it('parse timestamp, js Date, Dayex object', () => {
     const d = new Date('2020-08-07T12:00-07:00')
     const result = '2020-08-07T12:00:00-07:00'
     const TjsDate = dayex.tz(d, VAN)
-    const Tdayjs = dayex.tz(dayex(d), VAN)
+    const Tdayex = dayex.tz(dayex(d), VAN)
     const Timestamp = dayex.tz(d.getTime(), VAN)
     const Tmoment = moment.tz(d, VAN)
     expect(TjsDate.format()).toBe(result)
-    expect(Tdayjs.format()).toBe(result)
+    expect(Tdayex.format()).toBe(result)
     expect(Timestamp.format()).toBe(result)
     expect(Tmoment.format()).toBe(result)
   })
@@ -361,13 +361,13 @@ describe('UTC timezone', () => {
   })
 
   it('TZ with UTC', () => {
-    const dayjs1 = dayex('2000-01-01T09:01:00+09:00').tz('Etc/UTC', false)
-    expect(dayjs1.format()).toBe('2000-01-01T00:01:00Z')
+    const dayex1 = dayex('2000-01-01T09:01:00+09:00').tz('Etc/UTC', false)
+    expect(dayex1.format()).toBe('2000-01-01T00:01:00Z')
     const moment1 = moment('2000-01-01T09:01:00+09:00').tz('Etc/UTC', false)
     expect(moment1.format()).toBe('2000-01-01T00:01:00Z')
-    const dayjs2 = dayex('2000-01-01T09:01:00+09:00').tz('Etc/UTC', true)
+    const dayex2 = dayex('2000-01-01T09:01:00+09:00').tz('Etc/UTC', true)
     const moment2 = moment('2000-01-01T09:01:00+09:00').tz('Etc/UTC', true)
-    expect(dayjs2.format()).toBe(moment2.format())
+    expect(dayex2.format()).toBe(moment2.format())
   })
 })
 
@@ -570,7 +570,7 @@ describe('DST edge cases vs moment', () => {
   })
 })
 
-it('does not throw for invalid Day.js values (regression #111.22)', () => {
+it('does not throw for invalid Dayex values (regression #111.22)', () => {
   const invalid = dayex('invalid')
   expect(invalid.isValid()).toBe(false)
   expect(() => invalid.tz('Europe/Skopje')).not.toThrow()

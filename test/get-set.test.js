@@ -120,11 +120,11 @@ it('Set Unknown String', () => {
 })
 
 it('Immutable Set', () => {
-  const dayjsA = dayex()
-  const dayjsB = dayjsA.set('year', 2011)
+  const dayexA = dayex()
+  const dayexB = dayexA.set('year', 2011)
   const momentA = moment()
   const momentB = momentA.set('year', 2011)
-  expect(dayjsA.valueOf()).not.toBe(dayjsB.valueOf())
+  expect(dayexA.valueOf()).not.toBe(dayexB.valueOf())
   expect(momentA.valueOf()).toBe(momentB.valueOf())
 })
 

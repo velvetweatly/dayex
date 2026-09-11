@@ -31,20 +31,20 @@ function relativeTimeWithPlural(number, withoutSuffix, key) {
   return `${number} ${plural(format[key], +number)}`
 }
 
-const months = (dayjsInstance, format) => {
+const months = (dayexInstance, format) => {
   if (MONTHS_IN_FORMAT.test(format)) {
-    return monthFormat[dayjsInstance.month()]
+    return monthFormat[dayexInstance.month()]
   }
-  return monthStandalone[dayjsInstance.month()]
+  return monthStandalone[dayexInstance.month()]
 }
 months.s = monthStandalone
 months.f = monthFormat
 
-const monthsShort = (dayjsInstance, format) => {
+const monthsShort = (dayexInstance, format) => {
   if (MONTHS_IN_FORMAT.test(format)) {
-    return monthShortFormat[dayjsInstance.month()]
+    return monthShortFormat[dayexInstance.month()]
   }
-  return monthShortStandalone[dayjsInstance.month()]
+  return monthShortStandalone[dayexInstance.month()]
 }
 monthsShort.s = monthShortStandalone
 monthsShort.f = monthShortFormat

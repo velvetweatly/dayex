@@ -28,11 +28,11 @@ const monthFormat = 'stycznia_lutego_marca_kwietnia_maja_czerwca_lipca_sierpnia_
 const monthStandalone = 'styczeń_luty_marzec_kwiecień_maj_czerwiec_lipiec_sierpień_wrzesień_październik_listopad_grudzień'.split('_')
 const MONTHS_IN_FORMAT = /D MMMM/
 
-const months = (dayjsInstance, format) => {
+const months = (dayexInstance, format) => {
   if (MONTHS_IN_FORMAT.test(format)) {
-    return monthFormat[dayjsInstance.month()]
+    return monthFormat[dayexInstance.month()]
   }
-  return monthStandalone[dayjsInstance.month()]
+  return monthStandalone[dayexInstance.month()]
 }
 months.s = monthStandalone
 months.f = monthFormat

@@ -12,6 +12,9 @@ yarn.lock
 # jest
 coverage
 
+# website
+dashboard
+
 # build
 /locale
 /plugin

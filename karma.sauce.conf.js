@@ -90,7 +90,7 @@ module.exports = function (config) {
     logLevel: config.LOG_DEBUG,
     sauceLabs: {
       // build: 'Manual',
-      testName: 'Day.js'
+      testName: 'Dayex'
     },
     captureTimeout: 200000, // try fix ios timeout
     customLaunchers: batch,

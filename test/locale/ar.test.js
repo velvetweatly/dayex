@@ -20,14 +20,14 @@ afterEach(() => {
 
 it('Format Month with locale function', () => {
   for (let i = 0; i <= 7; i += 1) {
-    const dayjsAR = dayex().locale('ar').add(i, 'day')
+    const dayexAR = dayex().locale('ar').add(i, 'day')
     const momentAR = moment().locale('ar').add(i, 'day')
     const testFormat1 = 'DD MMMM YYYY MMM'
     const testFormat2 = 'MMMM'
     const testFormat3 = 'MMM'
-    expect(dayjsAR.format(testFormat1)).toEqual(momentAR.format(testFormat1))
-    expect(dayjsAR.format(testFormat2)).toEqual(momentAR.format(testFormat2))
-    expect(dayjsAR.format(testFormat3)).toEqual(momentAR.format(testFormat3))
+    expect(dayexAR.format(testFormat1)).toEqual(momentAR.format(testFormat1))
+    expect(dayexAR.format(testFormat2)).toEqual(momentAR.format(testFormat2))
+    expect(dayexAR.format(testFormat3)).toEqual(momentAR.format(testFormat3))
   }
 })
 

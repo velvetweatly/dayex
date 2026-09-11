@@ -59,11 +59,11 @@ it('ReferenceTime', () => {
     }
   ]
   dates.forEach((d) => {
-    const dayjsResult = dayex(now).calendar(d.date)
+    const dayexResult = dayex(now).calendar(d.date)
     const momentjsResult = moment(now).calendar(d.date)
-    expect(dayjsResult)
+    expect(dayexResult)
       .toEqual(momentjsResult)
-    expect(dayjsResult.indexOf(d.result) > -1)
+    expect(dayexResult.indexOf(d.result) > -1)
       .toBe(true)
   })
 })
