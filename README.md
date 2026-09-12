@@ -6,10 +6,10 @@ Dayex is a tiny, immutable JavaScript date library. The core stays under 3 KB gz
 
 The name is deliberate: **day + next**. A date you can chain, a range you can hold, a working calendar you can actually ship.
 
-[Documentation](https://dayex.org/) · [npm](https://www.npmjs.com/package/dayex) · [API](https://dayex.org/docs/en/parse/parse)
+[Documentation](https://dayex.org/) · [npm](https://www.npmjs.com/package/@dayex/dayex) · [API](https://dayex.org/docs)
 
 [![gzip](https://img.shields.io/bundlephobia/minzip/dayex?style=flat-square)](https://bundlephobia.com/package/dayex)
-[![npm](https://img.shields.io/npm/v/dayex.svg?style=flat-square)](https://www.npmjs.com/package/dayex)
+[![npm](https://img.shields.io/npm/v/dayex.svg?style=flat-square)](https://www.npmjs.com/package/@dayex/dayex)
 [![ci](https://img.shields.io/github/actions/workflow/status/velvetweatly/dayex/check.yml?style=flat-square)](https://github.com/velvetweatly/dayex/actions/workflows/check.yml)
 [![coverage](https://img.shields.io/codecov/c/github/velvetweatly/dayex/master.svg?style=flat-square)](https://codecov.io/gh/velvetweatly/dayex)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](./LICENSE)

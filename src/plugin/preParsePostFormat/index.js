@@ -1,4 +1,4 @@
-// Plugin template from https://dayex.org/docs/en/plugin/plugin
+// Plugin template from https://dayex.org/docs
 export default (option, dayexClass) => {
   const oldParse = dayexClass.prototype.parse
   dayexClass.prototype.parse = function (cfg) {

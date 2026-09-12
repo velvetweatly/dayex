@@ -1,6 +1,6 @@
 {
-  "name": "dayex",
-  "version": "0.0.0-development",
+  "name": "@dayex/dayex",
+  "version": "1.0.0",
   "description": "2KB immutable date time library alternative to Moment.js with the same modern API ",
   "main": "dayex.min.js",
   "types": "index.d.ts",
@@ -11,10 +11,10 @@
     "lint": "eslint src test build",
     "prettier": "prettier --write \"docs/**/*.md\"",
     "babel": "cross-env BABEL_ENV=build babel src --out-dir esm --copy-files && node build/esm",
-    "build": "cross-env BABEL_ENV=build node build && npm run size",
+    "build": "cross-env BABEL_ENV=build NODE_OPTIONS=--openssl-legacy-provider node build && npm run size",
     "sauce": "npx karma start karma.sauce.conf.js",
     "test:sauce": "npm run sauce -- 0 && npm run sauce -- 1 && npm run sauce -- 2  && npm run sauce -- 3",
-    "size": "size-limit && gzip-size dayex.min.js"
+    "size": "cross-env NODE_OPTIONS=--openssl-legacy-provider size-limit && gzip-size dayex.min.js"
   },
   "pre-commit": [
     "lint"
